@@ -55,12 +55,12 @@ def _display_results(parser: IDParser, all_ids: set, stats: dict):
     print("РЕЗУЛЬТАТЫ АНАЛИЗА")
     print("=" * 60)
 
-    print(f"\n📊 Статистика:")
-    print(f"   • Найдено уникальных ID: {stats['total_unique_ids']}")
-    print(f"   • Всего вхождений ID: {stats['total_occurrences']}")
+    print(f"\nСтатистика:")
+    print(f"Найдено уникальных ID: {stats['total_unique_ids']}")
+    print(f"Всего вхождений ID: {stats['total_occurrences']}")
 
     if all_ids:
-        print(f"\n🔍 Найденные ID (первые 20 из {len(all_ids)}):")
+        print(f"\nНайденные ID (первые 20 из {len(all_ids)}):")
 
         # Сортируем ID как числа
         sorted_ids = sorted(all_ids, key=int)
@@ -74,11 +74,11 @@ def _display_results(parser: IDParser, all_ids: set, stats: dict):
 
         # Показываем топ-10 самых частых ID
         if stats['most_common']:
-            print(f"\n📈 Топ-10 самых частых ID:")
+            print(f"\n Топ-10 самых частых ID:")
             for id_val, count in stats['most_common'][:10]:
                 print(f"   • ID {id_val}: {count} раз")
     else:
-        print("\n❌ ID не найдены в файле.")
+        print("\n ID не найдены в файле.")
 
 
 def _handle_parser_options(parser: IDParser):
@@ -212,21 +212,21 @@ def _show_detailed_stats(parser: IDParser):
     print("ДЕТАЛЬНАЯ СТАТИСТИКА")
     print("=" * 50)
 
-    print(f"\n📊 Общая статистика:")
-    print(f"   • Уникальных ID: {stats['total_unique_ids']}")
-    print(f"   • Всего вхождений: {stats['total_occurrences']}")
+    print(f"\nОбщая статистика:")
+    print(f"Уникальных ID: {stats['total_unique_ids']}")
+    print(f"Всего вхождений: {stats['total_occurrences']}")
 
     if stats['total_unique_ids'] > 0:
         print(f"   • Среднее вхождений на ID: {stats['total_occurrences'] / stats['total_unique_ids']:.2f}")
 
-    print(f"\n📈 Распределение:")
+    print(f"\nРаспределение:")
     id_counts = list(stats['id_frequency'].values())
     if id_counts:
         print(f"   • Минимум вхождений: {min(id_counts)}")
         print(f"   • Максимум вхождений: {max(id_counts)}")
 
     if stats['most_common']:
-        print(f"\n🏆 Топ-5 самых частых ID:")
+        print(f"\nТоп-5 самых частых ID:")
         for id_val, count in stats['most_common'][:5]:
             percentage = (count / stats['total_occurrences']) * 100
             print(f"   {id_val}: {count} раз ({percentage:.1f}%)")
